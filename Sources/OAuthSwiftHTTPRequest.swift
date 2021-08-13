@@ -285,17 +285,17 @@ open class OAuthSwiftHTTPRequest: NSObject, OAuthSwiftRequestHandle {
                     let url = request.url!
                     request.url = url.urlByAppending(queryString: queryString)
                     if headers[kHTTPHeaderContentType] == nil {
-                        request.setValue("application/x-www-form-urlencoded; charset=\(charset)", forHTTPHeaderField: kHTTPHeaderContentType)
+//                        request.setValue("application/x-www-form-urlencoded; charset=\(charset)", forHTTPHeaderField: kHTTPHeaderContentType)
                     }
                 } else {
                     if let contentType = headers[kHTTPHeaderContentType], contentType.contains("application/json") {
                         let jsonData = try JSONSerialization.data(withJSONObject: finalParameters, options: [])
-                        request.setValue("application/json; charset=\(charset)", forHTTPHeaderField: kHTTPHeaderContentType)
+//                        request.setValue("application/json; charset=\(charset)", forHTTPHeaderField: kHTTPHeaderContentType)
                         request.httpBody = jsonData
                     } else if let contentType = headers[kHTTPHeaderContentType], contentType.contains("multipart/form-data") {
                     // snip
                     } else {
-                        request.setValue("application/x-www-form-urlencoded; charset=\(charset)", forHTTPHeaderField: kHTTPHeaderContentType)
+//                        request.setValue("application/x-www-form-urlencoded; charset=\(charset)", forHTTPHeaderField: kHTTPHeaderContentType)
                         let queryString = finalParameters.urlEncodedQuery
                         request.httpBody = queryString.data(using: dataEncoding, allowLossyConversion: true)
                     }
